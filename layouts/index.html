@@ -1,17 +1,78 @@
 {{ partial "header.html" . }}
 
-    <h1>posts</h1>
-    {{ range first 10 .Data.Pages }}
-        {{ if eq .Type "blog"}}
-        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-        {{ end }}
-    {{ end }}
+  <div class="container">
+    <div class="row row-cards">
+      <div class="col-md-4">
 
-    <h1>pages</h1>
-    {{ range .Data.Pages }}
-        {{ if eq .Type "page" }}
-        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-        {{ end }}
-    {{ end }}
+        <div class="card card-profile">
+          <div class="card-header" style="background-image: url('/images/home-hero.jpg');"></div>
+          <div class="card-body text-center">
+            <img class="card-profile-img" src="{{ .Site.BaseURL }}images/{{ .Site.Params.avatar }}">
+            <h3 class="mb-3">Matt Kruskamp</h3>
+            <p class="mb-4">
+              I'm currently the Co-Founder / CTO with an amazing team at <a href="https://www.rentler.com">Rentler</a>.
+              We build property management software for independant landlords using a plethora of technologies.
+            </p>
+            <p class="mb-4">
+              I occasionally make other things as well.
+            </p>
+            <button class="btn btn-outline-primary btn-sm">
+              <span class="fa fa-linkedin"></span> Connect
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/mattkruskamp" data-widget-id="345272763512152065">Tweets by @mattkruskamp</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+
+      </div>
+      <div class="col-md-8">
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Recent Posts</h2>
+          </div>
+          <ul class="list-group card-list-group">
+            {{ range first 8 (where .Data.Pages "Section" "blog") }}
+            <li class="list-group-item py-5">
+              <div class="media">
+                <div class="media-body">
+                  <div class="media-heading">
+                    <small class="float-right text-muted">
+                      <time datetime="{{ .Date }}">{{ .Date.Format .Site.Params.date_format }}</time>
+                    </small>
+                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                  </div>
+                  <div class="mb-4">
+                    {{ .Summary }}
+                  </div>
+                  <div>
+                    <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes.</small>
+                    {{ if isset .Params "categories" }}
+                      {{ $categoriesLen := len .Params.categories }}
+                      {{ if gt $categoriesLen 0 }}
+                        {{ range $k, $v := .Params.categories }}
+                        <a class="btn btn-secondary btn-sm" href="{{ $.Site.BaseURL }}categories/{{ . | urlize | lower }}">{{ . }}</a>
+                        {{ if lt $k (sub $categoriesLen 1) }}&middot;{{ end }}
+                        {{ end }}
+                      {{ end }}
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+
+          <div class="card-body text-center">
+            <a class="btn btn-primary" href="/blog">See all blog posts</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 {{ partial "footer.html" . }}

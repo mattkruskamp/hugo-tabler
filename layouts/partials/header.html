@@ -47,9 +47,9 @@
         <!-- Header -->
         <div class="header py-4">
           <div class="container">
-            <div class="d-flex">
+            <div class="d-flex row">
               <a href="/" class="nav-link pr-0 leading-none">
-                <span class="avatar" style="background-image: url({{ .Site.BaseURL }}images/{{ .Site.Params.avatar }})"></span>
+                <span class="avatar" style="background-image: url('{{ .Site.BaseURL }}images/{{ .Site.Params.avatar }}')"></span>
                 <span class="ml-2 d-none d-lg-block">
                   <span class="text-default">{{ .Site.Params.name }}</span>
                   <small class="text-muted d-block mt-1">{{ .Site.Params.description }}</small>
@@ -61,6 +61,12 @@
                   {{ with .Site.Params.social.twitter }}&nbsp;<a href="//twitter.com/{{ . }}" class="btn btn-icon btn-twitter btn-sm" target="_blank"><i class="fa fa-twitter"></i></a>{{ end }}
                   {{ with .Site.Params.social.google }}&nbsp;<a href="//plus.google.com/u/0/{{ . }}" class="btn btn-icon btn-google btn-sm" target="_blank"><i class="fa fa-google"></i></a>{{ end }}
                   {{ with .Site.Params.social.youtube }}&nbsp;<a href="//youtube.com/{{ . }}" class="btn btn-icon btn-youtube btn-sm" target="_blank"><i class="fa fa-youtube"></i></a>{{ end }}
+                  {{ with .Site.Params.social.vimeo }}&nbsp;<a href="//vimeo.com/{{ . }}" class="btn btn-icon btn-vimeo btn-sm" target="_blank"><i class="fa fa-vimeo"></i></a>{{ end }}
+                  {{ with .Site.Params.social.dribble }}&nbsp;<a href="//dribble.com/{{ . }}" class="btn btn-icon btn-dribble btn-sm" target="_blank"><i class="fa fa-dribble"></i></a>{{ end }}
+                  {{ with .Site.Params.social.github }}&nbsp;<a href="//github.com/{{ . }}" class="btn btn-icon btn-github btn-sm" target="_blank"><i class="fa fa-github"></i></a>{{ end }}
+                  {{ with .Site.Params.social.instagram }}&nbsp;<a href="//instagram.com/{{ . }}" class="btn btn-icon btn-instagram btn-sm" target="_blank"><i class="fa fa-instagram"></i></a>{{ end }}
+                  {{ with .Site.Params.social.pinterest }}&nbsp;<a href="//pinterest.com/{{ . }}" class="btn btn-icon btn-pinterest btn-sm" target="_blank"><i class="fa fa-pinterest"></i></a>{{ end }}
+                  {{ with .Site.Params.social.linkedin }}&nbsp;<a href="//linkedin.com/in/{{ . }}" class="btn btn-icon btn-primary btn-sm" target="_blank"><i class="fa fa-linkedin"></i></a>{{ end }}
                 </div>
               </div>
               <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
@@ -76,64 +82,23 @@
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-3 ml-auto">
-                <form class="input-icon my-3 my-lg-0">
-                  <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
+                <form class="input-icon my-3 my-lg-0" action="http://www.google.com/search" method="get">
+                  <input type="search" name="q" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
                   <div class="input-icon-addon">
                     <i class="fe fe-search"></i>
                   </div>
                 </form>
               </div>
               <div class="col-lg order-lg-first">
+                {{ $currentPage := . }}
+                {{ with .Site.Menus.main }}
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                  {{ range . }}
                   <li class="nav-item">
-                    <a href="./index.html" class="nav-link"><i class="fe fe-home"></i> Home</a>
+                    <a href="{{ .URL }}" class="nav-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">{{ .Pre }} {{ .Name }}</a>
                   </li>
-                  <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> Interface</a>
-                    <div class="dropdown-menu dropdown-menu-arrow">
-                      <a href="./cards.html" class="dropdown-item ">Cards design</a>
-                      <a href="./charts.html" class="dropdown-item ">Charts</a>
-                      <a href="./pricing-cards.html" class="dropdown-item ">Pricing cards</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-calendar"></i> Components</a>
-                    <div class="dropdown-menu dropdown-menu-arrow">
-                      <a href="./maps.html" class="dropdown-item ">Maps</a>
-                      <a href="./icons.html" class="dropdown-item ">Icons</a>
-                      <a href="./store.html" class="dropdown-item ">Store</a>
-                      <a href="./blog.html" class="dropdown-item ">Blog</a>
-                      <a href="./carousel.html" class="dropdown-item ">Carousel</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a href="javascript:void(0)" class="nav-link active" data-toggle="dropdown"><i class="fe fe-file"></i> Pages</a>
-                    <div class="dropdown-menu dropdown-menu-arrow">
-                      <a href="./profile.html" class="dropdown-item ">Profile</a>
-                      <a href="./login.html" class="dropdown-item ">Login</a>
-                      <a href="./register.html" class="dropdown-item ">Register</a>
-                      <a href="./forgot-password.html" class="dropdown-item ">Forgot password</a>
-                      <a href="./400.html" class="dropdown-item ">400 error</a>
-                      <a href="./401.html" class="dropdown-item ">401 error</a>
-                      <a href="./403.html" class="dropdown-item ">403 error</a>
-                      <a href="./404.html" class="dropdown-item ">404 error</a>
-                      <a href="./500.html" class="dropdown-item ">500 error</a>
-                      <a href="./503.html" class="dropdown-item ">503 error</a>
-                      <a href="./email.html" class="dropdown-item ">Email</a>
-                      <a href="./empty.html" class="dropdown-item active">Empty page</a>
-                      <a href="./rtl.html" class="dropdown-item ">RTL mode</a>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a href="./form-elements.html" class="nav-link"><i class="fe fe-check-square"></i> Forms</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./gallery.html" class="nav-link"><i class="fe fe-image"></i> Gallery</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="./docs/index.html" class="nav-link"><i class="fe fe-file-text"></i> Documentation</a>
-                  </li>
-                </ul>
+                  {{ end }}
+                {{ end }}
               </div>
             </div>
           </div>
