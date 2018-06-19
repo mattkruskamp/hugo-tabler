@@ -16,9 +16,7 @@
             <p class="mb-4">
               I occasionally make other things as well.
             </p>
-            <button class="btn btn-outline-primary btn-sm">
-              <span class="fa fa-linkedin"></span> Connect
-            </button>
+            {{ with .Site.Params.social.linkedin }}<a href="//linkedin.com/in/{{ . }}" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa fa-linkedin"></i> Connect</a>{{ end }}
           </div>
         </div>
 
