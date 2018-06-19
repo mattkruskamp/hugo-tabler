@@ -26,15 +26,7 @@
                   </div>
                   <div>
                     <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes.</small>
-                    {{ if isset .Params "categories" }}
-                      {{ $categoriesLen := len .Params.categories }}
-                      {{ if gt $categoriesLen 0 }}
-                        {{ range $k, $v := .Params.categories }}
-                        <a class="btn btn-secondary btn-sm" href="{{ $.Site.BaseURL }}categories/{{ . | urlize | lower }}">{{ . }}</a>
-                        {{ if lt $k (sub $categoriesLen 1) }}&middot;{{ end }}
-                        {{ end }}
-                      {{ end }}
-                    {{ end }}
+                    {{ partial "post-meta.html" . }}
                   </div>
                 </div>
               </div>
