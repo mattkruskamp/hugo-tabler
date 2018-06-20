@@ -20,6 +20,14 @@
           </div>
         </div>
 
+        <div class="card card-aside">
+          <a href="/blog/2017/build-quick-net-core-api-and-site-on-mac-with-command-line/" target="_blank" class="card-aside-column" style="background-image: url('{{ .Site.BaseURL }}images/blog/0115/webdeploy-generator.jpg')"></a>
+          <div class="card-body d-flex flex-column">
+            <h4><a href="/blog/2017/build-quick-net-core-api-and-site-on-mac-with-command-line/" target="_blank">WebDeploy Generator</a></h4>
+            <div class="text-muted">Website taking .Net web deploy files and converting them to AppVeyor yml. Written as a demo.</div>
+          </div>
+        </div>
+
         <div class="card">
           <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/mattkruskamp" data-widget-id="345272763512152065">Tweets by @mattkruskamp</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -47,7 +55,7 @@
                     {{ .Summary }}
                   </div>
                   <div>
-                    <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes.</small>
+                    <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes</small>
                     {{ partial "post-meta.html" . }}
                   </div>
                 </div>

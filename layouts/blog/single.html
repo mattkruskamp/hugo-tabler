@@ -11,7 +11,12 @@
       <div class="card">
         <div class="card-body">
           <div class="text-wrap p-lg-6">
-            <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+            <div class="mb-6">
+              <small class="float-right">
+                <time datetime="{{ .Date }}">Posted: {{ .Date.Format .Site.Params.date_format }}</time>
+              </small>
+              {{ partial "post-meta.html" . }}
+            </div>
             {{ .Content }}
           </div>
           {{ template "_internal/disqus.html" . }}
