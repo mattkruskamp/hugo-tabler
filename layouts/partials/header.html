@@ -17,7 +17,18 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ .Site.BaseURL }}favicon.ico" />
 
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Description | default .Site.Params.Description }}" />
     <link rel="canonical" href="{{ .Permalink }}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" value="{{ .Summary }}">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail | .Site.Params.avatar }}" />
+    <meta property="og:description" content="{{ .Description | default .Site.Params.Description }}" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -49,7 +60,7 @@
           <div class="container">
             <div class="d-flex row">
               <a href="/" class="nav-link pr-0 leading-none">
-                <span class="avatar" style="background-image: url('{{ .Site.BaseURL }}images/{{ .Site.Params.avatar }}')"></span>
+                <span class="avatar" style="background-image: url('{{ .Site.BaseURL }}{{ .Site.Params.avatar }}')"></span>
                 <span class="ml-2 d-none d-lg-block">
                   <span class="text-default">{{ .Site.Params.name }}</span>
                   <small class="text-muted d-block mt-1">{{ .Site.Params.description }}</small>
