@@ -37,7 +37,7 @@
           <div class="card-body text-center">
           {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
             {{ if .Paginator.HasPrev }}
-              <a class="btn btn-primary" rel="prev" href="{{ .Site.BaseURL }}{{.Paginator.Prev.URL}}">« Newer</a>
+              <a class="btn btn-primary" rel="prev" href="{{.Paginator.Prev.URL}}">« Newer</a>
             {{ end }}
 
             {{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
@@ -45,7 +45,7 @@
             {{ end }}
 
             {{ if .Paginator.HasNext }}
-              <a class="btn btn-primary" rel="next" href="{{ .Site.BaseURL }}{{.Paginator.Next.URL}}">Older »</a>
+              <a class="btn btn-primary" rel="next" href="{{.Paginator.Next.URL}}">Older »</a>
             {{ end }}
           {{ end }}
           </div>
