@@ -41,7 +41,7 @@
             <h2 class="card-title">Recent Articles</h2>
           </div>
           <ul class="list-group card-list-group">
-            {{ range first 8 (where .Data.Pages "Section" "articles") }}
+            {{ range first 8 (where .Data.Pages "Section" "post") }}
             <li class="list-group-item py-5">
               <div class="media">
                 <div class="media-body">
@@ -65,7 +65,7 @@
           </ul>
 
           <div class="card-body text-center">
-            <a class="btn btn-primary" href="/articles/">See all articles</a>
+            <a class="btn btn-primary" href="/post/">See all posts</a>
           </div>
         </div>
 
