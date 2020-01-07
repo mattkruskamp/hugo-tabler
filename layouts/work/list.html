@@ -1,0 +1,40 @@
+{{ partial "header.html" . }}
+
+  <div class="container">
+
+    <div class="row row-cards">
+      {{ $paginator := .Paginate .Data.Pages }}
+      {{ range $paginator.Pages }}
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{{ .Title }}</h3>
+          </div>
+          <div class="card-body" style="height: 9rem; position: relative;">
+            {{ .Summary }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      <div class="col-md-12">
+        <div class="card-body text-center">
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          {{ if .Paginator.HasPrev }}
+            <a class="btn btn-primary" rel="prev" href="{{.Paginator.Prev.URL}}">« Newer</a>
+          {{ end }}
+
+          {{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
+            <span class="spacer"></span>
+          {{ end }}
+
+          {{ if .Paginator.HasNext }}
+            <a class="btn btn-primary" rel="next" href="{{.Paginator.Next.URL}}">Older »</a>
+          {{ end }}
+        {{ end }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{{ partial "footer.html" . }}
