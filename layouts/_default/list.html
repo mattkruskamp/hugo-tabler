@@ -1,67 +1,65 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
+<div class="container">
 
-  <div class="container">
+  <div class="row row-cards">
+    <div class="col-lg-9">
 
-    <div class="row row-cards">
-      <div class="col-md-9">
-
-        <div class="card">
-          <!-- <div class="card-header">
-            <h2 class="card-title">Recent Posts</h2>
-          </div> -->
-          <ul class="list-group card-list-group">
-            {{ $paginator := .Paginate .Data.Pages }}
-            {{ range $paginator.Pages }}
-            <li class="list-group-item py-5">
-              <div class="media">
-                <div class="media-body">
-                  <div class="media-heading">
-                    <small class="float-right text-muted">
-                      <time datetime="{{ .Date }}">{{ .Date.Format .Site.Params.date_format }}</time>
-                    </small>
-                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                  </div>
-                  <div class="mb-4">
-                    {{ .Summary }}
-                  </div>
-                  <div>
-                    <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes.</small>
-                    {{ partial "post-meta.html" . }}
-                  </div>
+      <div class="card">
+        <!-- <div class="card-header">
+          <h2 class="card-title">Recent Posts</h2>
+        </div> -->
+        <ul class="list-group card-list-group">
+          {{ $paginator := .Paginate .Data.Pages }}
+          {{ range $paginator.Pages }}
+          <li class="list-group-item py-5">
+            <div class="media">
+              <div class="media-body">
+                <div class="media-heading">
+                  <small class="float-right text-muted">
+                    <time datetime="{{ .Date }}">{{ .Date.Format .Site.Params.date_format }}</time>
+                  </small>
+                  <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                </div>
+                <div class="mb-4">
+                  {{ .Summary }}
+                </div>
+                <div>
+                  <small class="float-right text-muted">approx. {{ .ReadingTime }} minutes.</small>
+                  {{ partial "post-meta.html" . }}
                 </div>
               </div>
-            </li>
-            {{ end }}
-          </ul>
-
-          <div class="card-body text-center">
-          {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-            {{ if .Paginator.HasPrev }}
-              <a class="btn btn-primary" rel="prev" href="{{.Paginator.Prev.URL}}">« Newer</a>
-            {{ end }}
-
-            {{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
-              <span class="spacer"></span>
-            {{ end }}
-
-            {{ if .Paginator.HasNext }}
-              <a class="btn btn-primary" rel="next" href="{{.Paginator.Next.URL}}">Older »</a>
-            {{ end }}
+            </div>
+          </li>
           {{ end }}
-          </div>
+        </ul>
 
+        <div class="card-body text-center">
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+          {{ if .Paginator.HasPrev }}
+            <a class="btn btn-primary" rel="prev" href="{{.Paginator.Prev.URL}}">« Newer</a>
+          {{ end }}
+
+          {{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
+            <span class="spacer"></span>
+          {{ end }}
+
+          {{ if .Paginator.HasNext }}
+            <a class="btn btn-primary" rel="next" href="{{.Paginator.Next.URL}}">Older »</a>
+          {{ end }}
+        {{ end }}
         </div>
 
       </div>
-      <div class="col-md-3">
 
-          <div class="card">
-            <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/mattkruskamp" data-widget-id="345272763512152065">Tweets by @mattkruskamp</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-
-        </div>
     </div>
-  </div>
+    <div class="col-lg-3">
 
-{{ partial "footer.html" . }}
+        <div class="card">
+          <a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/mattkruskamp" data-widget-id="345272763512152065">Tweets by @mattkruskamp</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+
+      </div>
+  </div>
+</div>
+{{ end }}
