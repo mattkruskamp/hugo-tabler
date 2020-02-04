@@ -12,9 +12,11 @@
         <div class="card-body">
           <div class="text-wrap p-lg-6">
             <div class="mb-6">
-              <small class="float-right">
-                <time datetime="{{ .Date }}">Posted: {{ .Date.Format .Site.Params.date_format }}</time>
-              </small>
+              <div class="float-right text-muted">
+                <div class=”entry-meta”>
+                  <a class=”entry-date published”>{{ .Date.Format .Site.Params.date_format }}</a>
+                </div>
+              </div>
               {{ partial "post-meta.html" . }}
             </div>
             {{ .Content }}
